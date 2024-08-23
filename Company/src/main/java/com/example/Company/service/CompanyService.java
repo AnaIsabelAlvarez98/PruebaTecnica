@@ -27,13 +27,14 @@ public class CompanyService {
     }
 
     public Company updateCompany(Long id, Company companyDetails){
-        Company company = companyRepository.findById(id).orElseThrow(() -> new RuntimeException("Company not found"));
-
-        company.setCodigoCompany(companyDetails.getCodigoCompany());
-        company.setNameCompany((companyDetails.getNameCompany()));
-        company.setDescriptionCompany(companyDetails.getDescriptionCompany());
-
+        Company company = companyRepository.findById(id).orElse(null);
+        if (company !=null){
+            company.setCodigoCompany(companyDetails.getCodigoCompany());
+            company.setNameCompany(companyDetails.getNameCompany());
+            company.setDescriptionCompany(companyDetails.getDescriptionCompany());
         return companyRepository.save(company);
+        }
+        return null;
     }
 
     public void deleteCompany(Long id){
