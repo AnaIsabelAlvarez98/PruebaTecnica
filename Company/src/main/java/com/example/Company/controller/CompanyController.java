@@ -1,4 +1,4 @@
-package controller;
+package com.example.Company.controller;
 
 import com.example.Company.model.Company;
 import com.example.Company.service.CompanyService;
